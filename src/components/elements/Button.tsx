@@ -4,14 +4,14 @@ type ButtonProps = {
     onclick?: () => void
     text?: string
     type?: HTMLButtonElement["type"]
-    variant?: "primary" | "secondary"
+    variant?: Variant
     height?: number
     width?: number
 }
 
-const Button: FC<ButtonProps> = ({ onclick, text = "Button Text", type = "button", variant = "primary", height = 40, width = 100 }) => {
+const Button: FC<ButtonProps> = ({ onclick, text = "Button Text", type = "button", variant = "Desktop", height = 40, width = 100 }) => {
     switch (variant) {
-        case "primary":
+        case "Mobile":
             return <button
                 type={type}
                 onClick={onclick}
@@ -20,7 +20,7 @@ const Button: FC<ButtonProps> = ({ onclick, text = "Button Text", type = "button
             >
                 {text}
             </button>
-        case "secondary":
+        case "Desktop":
             return <button
                 type={type}
                 onClick={onclick}
@@ -34,7 +34,7 @@ const Button: FC<ButtonProps> = ({ onclick, text = "Button Text", type = "button
                 type={type}
                 onClick={onclick}
                 style={{ height, width }}
-                className="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                className="rounded bg-white px-2 py-1 text-xs font-semibold text-blue-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             >
                 {text}
             </button>;
