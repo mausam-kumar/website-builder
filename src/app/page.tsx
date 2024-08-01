@@ -1,7 +1,6 @@
 "use client"
 import Editor from '@/components/Editor';
 import ElementPanel from '@/components/ElementPanel';
-import Button from '@/components/elements/Button';
 import ButtonForm from '@/components/forms/ButtonForm';
 import { EditorStateProvider } from '@/context/EditorStateProvider';
 
