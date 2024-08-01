@@ -9,8 +9,8 @@ const FormInput = ({
     placeholder?: string;
     type?: string;
 }) => {
-    const { field = {}, fieldState } = useController({ name });
-    const { } = fieldState
+    const { field } = useController({ name });
+
     return (
         <div className="w-full">
             <div className="relative">
@@ -23,7 +23,7 @@ const FormInput = ({
                 <input
                     type={type}
                     id={name}
-                    name={name}
+                    {...field}
                     className="block w-full rounded-md border-0 p-2 text-gray-700 text-gray-1 shadow-sm ring-1 ring-inset ring-green-3 disabled:bg-slate-100 disabled:cursor-not-allowed focus:ring-green-1 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6"
                 />
             </div>

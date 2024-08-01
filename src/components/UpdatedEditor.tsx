@@ -9,6 +9,7 @@ import { useSelectedElementStateContext } from "@/context/SelectedElementStatePr
 
 const Editor = () => {
     const { editorState, setEditorState } = useEditorStateContext()
+
     const { setSelectedElement } = useSelectedElementStateContext()
     const editorRef = useRef<HTMLDivElement>(null);
     const [, drop] = useDrop({

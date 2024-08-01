@@ -39,7 +39,7 @@ const DraggableElement: React.FC<DraggableElementProps> = ({ element, onSelect }
     >
       {element.type === ElementType.TEXT && <div>{element.content.text}</div>}
       {element.type === ElementType.IMAGE && <DynamicImage imageURL={element.content.imageURL} />}
-      {element.type === ElementType.BUTTON && <Button type="button" text={element.content.text} showCloseBtn />}
+      {element.type === ElementType.BUTTON && <Button type="button" text={element.content.text || "Default Text"} height={Number(element.content.height || 40)} width={Number(element.content.width || 200)} showCloseBtn />}
     </div>
   );
 };
