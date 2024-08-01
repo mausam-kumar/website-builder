@@ -1,6 +1,6 @@
 "use client"
 import PropertiesPanel from '@/components/PropertiesPanel';
-import Editor from '@/components/UpdatedEditor';
+import Editor from '@/components/Editor';
 import { EditorStateProvider } from '@/context/EditorStateProvider';
 import { SelectedElementStateProvider } from '@/context/SelectedElementStateProvider';
 import { DndProvider } from "react-dnd";

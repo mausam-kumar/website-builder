@@ -2,18 +2,13 @@
 import { useEditorStateContext } from "@/context/EditorStateProvider"
 import DynamicImage from "./elements/Image"
 import Button from "./elements/Button"
-import { FC } from "react"
+import { Element } from "../../type"
+import EmptyState from "./EmptyState"
 
-type PreviewProps = {
-    templateId: string
-}
-
-const Preview: FC<PreviewProps> = ({ templateId }) => {
+const Preview = () => {
     const { editorState } = useEditorStateContext()
 
-    const element = editorState.find((_) => _.id === templateId)
-    const { left, top, type, content = {} } = element || {}
-    const renderAction = () => {
+    const renderAction = ({ type, content }: Element) => {
         switch (type) {
             case "image":
                 return <DynamicImage imageURL={content.imageURL} height={Number(content.height || 250)} width={Number(content.width || 500)} />
@@ -24,21 +19,28 @@ const Preview: FC<PreviewProps> = ({ templateId }) => {
             default:
                 break;
         }
-        return
     };
 
-    return <div className="flex-1 relative bg-gray-100">
-        <div
-            className="absolute"
-            style={{
-                left,
-                top,
-            }}
-        >
-            {
-                renderAction()
-            }
-        </div>
+    return <div className="flex-1 relative bg-gray-100 min-h-screen min-w-screen">
+        {!editorState.length && <div className="pt-20"><EmptyState /></div>}
+        {
+            editorState.map((_) => {
+                const { left, top } = _ || {}
+                return <div
+                    key={_.id}
+                    className="absolute"
+                    style={{
+                        left,
+                        top,
+                    }}
+                >
+                    {
+                        renderAction(_)
+                    }
+                </div>
+            })
+        }
+
     </div>
 
 }

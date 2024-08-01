@@ -13,10 +13,10 @@ const PropertiesPanel = () => {
     const renderAction = () => {
         const element = editorState.find((_) => _.id === selectedElement?.id)
         const { height, width, text, imageURL, alt } = element?.content || {}
-        console.log(element, "selectedElement")
+
         switch (type) {
             case "button":
-                return <ButtonForm height={height || "40" } width={width || "200"} text={text || "Default Text"} />
+                return <ButtonForm height={height || "40"} width={width || "200"} text={text || "Default Text"} />
             case "image":
                 return <ImageForm imageURL={imageURL || defaultImageURL} alt={alt || "This is default Alt"} height={height || "250"} width={width || "500"} />
             default:
@@ -24,7 +24,10 @@ const PropertiesPanel = () => {
         }
     }
 
-    return <div className="min-w-72 space-y-10">
+    return <div className="min-w-72 space-y-10 rounded-md p-4 shadow-md">
+        <p className="text-center text-xl font-semibold leading-8 text-black text-opacity-70 sm:text-xl sm:leading-9 my-4">
+            Select element to start editing
+        </p>
         {renderAction()}
     </div>
 };
