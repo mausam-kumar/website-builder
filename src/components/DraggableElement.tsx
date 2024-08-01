@@ -1,7 +1,5 @@
-import { useDrag, useDrop, DragSourceMonitor, DropTargetMonitor } from "react-dnd";
+import { useDrag, useDrop, DragSourceMonitor } from "react-dnd";
 import React, { useRef } from "react";
-import Image from "next/image";
-import { defaultImageURL } from "@/utils/constant";
 import Button from "./elements/Button";
 import { Element, ElementType } from "../../type";
 import DynamicImage from "./elements/Image";
@@ -26,7 +24,7 @@ const DraggableElement: React.FC<DraggableElementProps> = ({ element, onSelect }
     hover: () => onSelect(element.id),
   });
 
-  drag(drop(ref)); // Attach both drag and drop to the ref
+  drag(drop(ref));
 
   return (
     <div

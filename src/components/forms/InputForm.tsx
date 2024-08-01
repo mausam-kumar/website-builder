@@ -9,7 +9,8 @@ const FormInput = ({
     placeholder?: string;
     type?: string;
 }) => {
-    const { field, fieldState } = useController({ name });
+    const { field = {}, fieldState } = useController({ name });
+    const { } = fieldState
     return (
         <div className="w-full">
             <div className="relative">

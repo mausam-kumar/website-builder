@@ -2,12 +2,11 @@
 import {
     createContext, Dispatch, ReactNode, SetStateAction, useContext, useState,
 } from "react";
-
-type SelectedElement = { selectedElementId: number | string | null }
+import { Element } from "../../type";
 
 type EditorState = {
-    editorState: SelectedElement;
-    setEditorState: Dispatch<SetStateAction<SelectedElement>>;
+    selectedElement: Element | null;
+    setSelectedElement: Dispatch<SetStateAction<Element | null >>;
 }
 
 const SelectedElementStateContext = createContext<EditorState>(null!);
@@ -17,14 +16,14 @@ export const SelectedElementStateProvider = ({
 }: {
     children: ReactNode;
 }) => {
-    const [editorState, setEditorState] = useState<SelectedElement>({ selectedElementId: null });
+    const [selectedElement, setSelectedElement] = useState<Element | null >(null);
 
     return (
         <SelectedElementStateContext.Provider
             // eslint-disable-next-line react/jsx-no-constructed-context-values
             value={{
-                editorState,
-                setEditorState,
+                selectedElement,
+                setSelectedElement,
             }}
         >
             {children}
