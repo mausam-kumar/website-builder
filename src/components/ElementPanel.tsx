@@ -1,5 +1,6 @@
 import { useEditorStateContext } from "@/context/EditorStateProvider";
 import Button from "./elements/Button";
+import Sidebar from "./Sidebar";
 
 const ElementPanel = () => {
     const { editorState, setEditorState } = useEditorStateContext()
@@ -19,6 +20,7 @@ const ElementPanel = () => {
     };
 
     return <div className='shadow-lg rounded-sm p-4 space-y-6 flex flex-col w-fit'>
+      <Sidebar />
         {
             availableElement.map((_) => {
                 return <Button key={_.name} text={_.text} variant="Desktop" onClick={() => addElementToEditor({ type: _.type })} />
