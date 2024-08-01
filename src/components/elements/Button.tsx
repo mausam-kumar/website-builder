@@ -27,7 +27,7 @@ const Button: FC<ButtonProps> = ({ onClick, handleRemove, showCloseBtn = false, 
                 {showCloseBtn && <button onClick={handleRemove} type="button" className="rounded-full p-1.5 bg-red-800 text-white font-semibold absolute -top-1 z-10 -right-1">X</button>}
             </div>
         case "Desktop":
-            return <div className="relative w-fit">
+            return <div className="relative w-fit border">
                 <button
                     type={type}
                     onClick={onClick}
@@ -36,7 +36,7 @@ const Button: FC<ButtonProps> = ({ onClick, handleRemove, showCloseBtn = false, 
                 >
                     {text}
                 </button>
-                {showCloseBtn && <button onClick={handleRemove} className="rounded-full block p-1 bg-red-800 text-white font-semibold absolute -top-4 z-10 -right-1 h-8 w-8">X</button>}
+                {showCloseBtn && <button onClick={handleRemove} className="rounded-full block p-1 bg-white border text-black text-opacity-60 font-semibold absolute -top-4 z-10 -right-1 h-8 w-8">X</button>}
             </div>
         default:
             return <div className="relative w-fit">

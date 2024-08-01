@@ -1,14 +1,8 @@
 "use-client"
-import { sampleTemplate } from "@/utils/constant";
 import {
     createContext, Dispatch, ReactNode, SetStateAction, useContext, useState,
 } from "react";
-
-type Element = {
-    id: number
-    type: string;
-    props: Record<string, string | number>;
-}
+import { Element } from "../../type";
 
 type EditorState = {
     editorState: Element[];
@@ -22,8 +16,7 @@ export const EditorStateProvider = ({
 }: {
     children: ReactNode;
 }) => {
-    const [editorState, setEditorState] = useState(sampleTemplate.ecommerce);
-
+    const [editorState, setEditorState] = useState<Element[]>([]);
     return (
         <EditorStateContext.Provider
             // eslint-disable-next-line react/jsx-no-constructed-context-values
