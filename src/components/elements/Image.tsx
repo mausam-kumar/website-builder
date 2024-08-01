@@ -13,7 +13,6 @@ type ImageProps = {
 }
 
 const DynamicImage: FC<ImageProps> = ({ imageURL = defaultImageURL, handleRemove, alt = "Default alt text", variant = "Desktop", height = 300, width = 400 }) => {
-    console.log({ height, width, imageURL })
     switch (variant) {
         case "Desktop":
             return <figure className="max-w-xl relative" style={{ height, width }}>

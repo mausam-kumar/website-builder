@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { FC, useRef } from "react";
 import { DragSourceMonitor, useDrag } from "react-dnd";
 
 export enum ElementType {
@@ -7,7 +7,7 @@ export enum ElementType {
     BUTTON = "button",
   }
   
-  export interface Element {
+  export type Element = {
     id: string;
     type: ElementType;
     left: number;
@@ -27,12 +27,12 @@ const Sidebar = () => {
   );
 };
 
-interface SidebarItemProps {
+type SidebarItemProps = {
     type: ElementType;
     children: React.ReactNode;
   }
   
-  const SidebarItem: React.FC<SidebarItemProps> = ({ type, children }) => {
+  const SidebarItem: FC<SidebarItemProps> = ({ type, children }) => {
     const ref = useRef<HTMLDivElement>(null);
   
     const [, drag] = useDrag({

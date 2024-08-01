@@ -5,7 +5,7 @@ import { Element, ElementType } from "../../type";
 import DynamicImage from "./elements/Image";
 import { useEditorStateContext } from "@/context/EditorStateProvider";
 
-interface DraggableElementProps {
+type DraggableElementProps = {
   element: Element;
   onSelect: (id: string) => void;
 }

@@ -19,7 +19,6 @@ export const EditorStateProvider = ({
     const [editorState, setEditorState] = useState<Element[]>([]);
     return (
         <EditorStateContext.Provider
-            // eslint-disable-next-line react/jsx-no-constructed-context-values
             value={{
                 editorState,
                 setEditorState,

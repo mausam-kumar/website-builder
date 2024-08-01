@@ -20,7 +20,6 @@ export const SelectedElementStateProvider = ({
 
     return (
         <SelectedElementStateContext.Provider
-            // eslint-disable-next-line react/jsx-no-constructed-context-values
             value={{
                 selectedElement,
                 setSelectedElement,
