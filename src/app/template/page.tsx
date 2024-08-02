@@ -9,7 +9,6 @@ import { useMemo } from "react";
 const Templates = () => {
     const resp = useParams()
 
-    console.log(resp.id)
     const res = getCookie("templates") || "[]"
     const savedTemplates = useMemo(() => JSON.parse(res), [res])
 

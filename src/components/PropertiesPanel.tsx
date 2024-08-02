@@ -2,7 +2,8 @@ import { useSelectedElementStateContext } from "@/context/SelectedElementStatePr
 import ButtonForm from "./forms/ButtonForm";
 import ImageForm from "./forms/ImageForm";
 import { useEditorStateContext } from "@/context/EditorStateProvider";
-import { defaultButton, defaultImage, defaultImageURL } from "@/utils/constant";
+import { defaultButton, defaultImage, defaultImageURL, defaultTextArea } from "@/utils/constant";
+import TextAreaForm from "./forms/TextAreaForm";
 
 const PropertiesPanel = () => {
     const { editorState } = useEditorStateContext()
@@ -17,6 +18,8 @@ const PropertiesPanel = () => {
                 return <ButtonForm height={height || defaultButton.height} width={width || defaultButton.width} text={text || "Default Text"} backgroundColor={backgroundColor || defaultButton.backgroundColor} textColor={textColor || defaultButton.textColor} />
             case "image":
                 return <ImageForm imageURL={imageURL || defaultImageURL} alt={alt || "This is default Alt"} height={height || defaultImage.height} width={width || defaultImage.width} />
+            case "text":
+                return <TextAreaForm text={text || defaultTextArea.text} backgroundColor={backgroundColor || defaultTextArea.backgroundColor} textColor={textColor || defaultTextArea.textColor} height={height || defaultTextArea.height} width={width || defaultTextArea.width} />
             default:
                 return null;
         }

@@ -81,7 +81,7 @@ const Editor = () => {
         const idInURL = searchParams.get("templateId")
 
         const template = savedTemplates.find((_: { id: string, editorState: Element[] }) => _.id === idInURL)
-        console.log(template)
+
         if (!!template?.editorState?.length) {
             setEditorState(template.editorState)
         }

@@ -29,7 +29,6 @@ const Preview = ({ templateId }: { templateId: string }) => {
         const savedTemplates = JSON.parse(res)
 
         const template = savedTemplates.find((_: { id: string, editorState: Element[] }) => _.id === templateId)
-        console.log(template)
         if (!!template?.editorState?.length) {
             setPreviewState(template.editorState)
         }

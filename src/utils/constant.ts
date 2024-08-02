@@ -17,3 +17,10 @@ export const defaultButton = {
     textColor: "#ffffff",
     backgroundColor: "#334155"
 }
+export const defaultTextArea = {
+    text: "This text is for textarea",
+    height: "120",
+    width: "300",
+    textColor: "#ffffff",
+    backgroundColor: "#334155"
+}

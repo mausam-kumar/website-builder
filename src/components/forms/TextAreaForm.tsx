@@ -5,15 +5,15 @@ import { useEditorStateContext } from "@/context/EditorStateProvider";
 import { useSelectedElementStateContext } from "@/context/SelectedElementStateProvider";
 import Button from "../elements/Button";
 
-type ButtonFormProps = {
-    text: string
-    height: string
-    width: string
-    textColor: string
-    backgroundColor: string
+type TextAreaFormProps = {
+   text: string
+   height: string
+   width: string
+   textColor: string
+   backgroundColor: string
 }
 
-const ButtonForm: FC<ButtonFormProps> = ({ text, height, width, textColor, backgroundColor }) => {
+const TextAreaForm: FC<TextAreaFormProps> = ({ text, height, width, textColor, backgroundColor }) => {
     const { editorState, setEditorState } = useEditorStateContext()
     const { selectedElement } = useSelectedElementStateContext()
     const methods = useForm({
@@ -27,12 +27,12 @@ const ButtonForm: FC<ButtonFormProps> = ({ text, height, width, textColor, backg
         mode: "onSubmit",
     });
     const { handleSubmit } = methods;
-    const handleFormSubmit = (formData: ButtonFormProps) => {
-        const { height, width, text, backgroundColor, textColor } = formData || {}
+    const handleFormSubmit = (formData: TextAreaFormProps) => {
+        const { height, width, text, textColor, backgroundColor } = formData || {}
         const updatedState = editorState.map((_) => {
             if (_.id === selectedElement?.id) {
-                return { ..._, content: { ..._.content, height, width, text, backgroundColor, textColor } }
-            } else {
+                return { ..._, content: {..._.content, height, width, text, textColor, backgroundColor } }
+            }else{
                 return _
             }
         })
@@ -51,4 +51,4 @@ const ButtonForm: FC<ButtonFormProps> = ({ text, height, width, textColor, backg
     </FormProvider>
 };
 
-export default ButtonForm
+export default TextAreaForm
