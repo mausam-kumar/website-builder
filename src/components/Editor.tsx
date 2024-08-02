@@ -23,8 +23,9 @@ const Editor = () => {
                 const editorBounds = editorRef.current.getBoundingClientRect();
                 if (item.id) {
                     setEditorState((prev) =>
-                        prev.map((_) =>
-                            _.id === item.id ? { ..._, left: offset.x - editorBounds.left, top: offset.y - editorBounds.top } : _
+                        prev.map((_) => {
+                            return _.id === item.id ? { ..._, left: offset.x - editorBounds.left - Number((_?.content?.width || 0)) / 2, top: offset.y - editorBounds.top - Number((_?.content?.height || 0)) / 2 } : _
+                        }
                         )
                     );
                 }
@@ -34,7 +35,7 @@ const Editor = () => {
                         type: item.type,
                         left: offset.x - editorBounds.left,
                         top: offset.y - editorBounds.top,
-                        content: {},
+                        content: item.type === "button" ? { height: "40", width: "160" }: { height: "250", width: "500" },
                     };
                     setEditorState((prev) => [...prev, newElement]);
                 }
@@ -58,15 +59,15 @@ const Editor = () => {
         const maxAge = 7 * 24 * 60 * 60 * 1000;
 
         if (idInURL) {
-            const updatedTemplateList = savedTemplates.map((_: { id: string, editorState: Element[]}) => {
+            const updatedTemplateList = savedTemplates.map((_: { id: string, editorState: Element[] }) => {
                 if (_.id === idInURL) {
                     return { ..._, editorState }
-                }else {
+                } else {
                     return _
                 }
             })
             setCookie("templates", updatedTemplateList, { maxAge })
-        }else{
+        } else {
             const id = uuidv4()
             push(`/?templateId=${id}`)
             setCookie("templates", [...savedTemplates, { id, editorState }], { maxAge })
@@ -78,12 +79,12 @@ const Editor = () => {
         const savedTemplates = JSON.parse(res)
         const idInURL = searchParams.get("templateId")
 
-        const template = savedTemplates.find((_: { id: string, editorState: Element[]}) => _.id === idInURL)
+        const template = savedTemplates.find((_: { id: string, editorState: Element[] }) => _.id === idInURL)
         console.log(template)
         if (!!template?.editorState?.length) {
             setEditorState(template.editorState)
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
