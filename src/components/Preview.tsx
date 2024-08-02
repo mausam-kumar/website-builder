@@ -6,6 +6,7 @@ import EmptyState from "./EmptyState"
 import { useCallback, useEffect, useState } from "react"
 import { getCookie } from "cookies-next"
 import Link from "next/link"
+import { defaultImage } from "@/utils/constant"
 
 const Preview = ({ templateId }: { templateId: string }) => {
     const [previewState, setPreviewState] = useState<Element[]>(null!)
@@ -13,7 +14,7 @@ const Preview = ({ templateId }: { templateId: string }) => {
     const renderAction = ({ type, content }: Element) => {
         switch (type) {
             case "image":
-                return <DynamicImage imageURL={content.imageURL} height={Number(content.height || 250)} width={Number(content.width || 500)} />
+                return <DynamicImage imageURL={content.imageURL} height={Number(content.height || defaultImage.height)} width={Number(content.width || defaultImage.width)} />
             case "button":
                 return <Button type="button" text={content.text || "Default Text"} height={Number(content.height || 40)} width={Number(content.width || 200)} />
             case "text":

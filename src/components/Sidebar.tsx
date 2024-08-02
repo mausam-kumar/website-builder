@@ -1,3 +1,4 @@
+import { defaultButton, defaultImage } from "@/utils/constant";
 import { FC, useRef } from "react";
 import { DragSourceMonitor, useDrag } from "react-dnd";
 
@@ -19,7 +20,7 @@ export type Element = {
 const Sidebar = () => {
   return (
     <div className="w-48 px-4 border-r border-gray-300 bg-white rounded-md shadow-md">
-      <p className="text-center text-xl font-semibold leading-8 text-black text-opacity-70 sm:text-2xl sm:leading-9 my-4">
+      <p className="text-center text-xl font-medium leading-8 text-black text-opacity-70 sm:text-2xl sm:leading-9 my-4">
         Elements
       </p>
       <SidebarItem type={ElementType.TEXT}>Text</SidebarItem>
@@ -39,7 +40,7 @@ const SidebarItem: FC<SidebarItemProps> = ({ type, children }) => {
 
   const [, drag] = useDrag({
     type,
-    item: { type },
+    item: { type, height: type === "button" ? defaultButton.height : defaultImage.height, width: type === "button" ? defaultButton.width : defaultImage.width },
     collect: (monitor: DragSourceMonitor) => ({
       isDragging: monitor.isDragging(),
     }),

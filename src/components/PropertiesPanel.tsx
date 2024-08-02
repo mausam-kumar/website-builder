@@ -2,8 +2,7 @@ import { useSelectedElementStateContext } from "@/context/SelectedElementStatePr
 import ButtonForm from "./forms/ButtonForm";
 import ImageForm from "./forms/ImageForm";
 import { useEditorStateContext } from "@/context/EditorStateProvider";
-import { Element } from "../../type";
-import { defaultImageURL } from "@/utils/constant";
+import { defaultButton, defaultImage, defaultImageURL } from "@/utils/constant";
 
 const PropertiesPanel = () => {
     const { editorState } = useEditorStateContext()
@@ -16,9 +15,9 @@ const PropertiesPanel = () => {
 
         switch (type) {
             case "button":
-                return <ButtonForm height={height || "40"} width={width || "200"} text={text || "Default Text"} />
+                return <ButtonForm height={height || defaultButton.height} width={width || defaultButton.width} text={text || "Default Text"} />
             case "image":
-                return <ImageForm imageURL={imageURL || defaultImageURL} alt={alt || "This is default Alt"} height={height || "250"} width={width || "500"} />
+                return <ImageForm imageURL={imageURL || defaultImageURL} alt={alt || "This is default Alt"} height={height || defaultImage.height} width={width || defaultImage.width} />
             default:
                 return null;
         }

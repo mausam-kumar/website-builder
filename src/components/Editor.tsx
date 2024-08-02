@@ -8,6 +8,7 @@ import { Element, ElementType } from "../../type";
 import { useEditorStateContext } from "@/context/EditorStateProvider";
 import { useSelectedElementStateContext } from "@/context/SelectedElementStateProvider";
 import { useRouter, useSearchParams } from "next/navigation";
+import { defaultButton, defaultImage } from "@/utils/constant";
 
 const Editor = () => {
     const { editorState, setEditorState } = useEditorStateContext()
@@ -35,7 +36,7 @@ const Editor = () => {
                         type: item.type,
                         left: offset.x - editorBounds.left,
                         top: offset.y - editorBounds.top,
-                        content: item.type === "button" ? { height: "40", width: "160" }: { height: "250", width: "500" },
+                        content: item.type === "button" ? { height: defaultButton.height, width: defaultButton.width }: { height: defaultImage.height, width: defaultImage.width },
                     };
                     setEditorState((prev) => [...prev, newElement]);
                 }
@@ -103,7 +104,6 @@ const Editor = () => {
                         {!!editorState.length && <button onClick={handleSaveTemplate} type="button" className="rounded border-2 border-green-900 p-2 w-fit mt-4 text-center text-black text-opacity-70">Save</button>}
                     </div>
                     <div >
-
                         {editorState.map((_) => (
                             <DraggableElement
                                 key={_.id}

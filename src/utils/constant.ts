@@ -4,3 +4,14 @@ export const sampleTemplate = {
     ecommerce: [{ id: 1, type: "image", props: { }}, { id: 2, type: "image", props: { }}, { id: 3, type: "button", props: { }}],
     empty: []
 }
+
+export const defaultImage = {
+    height: "150",
+    width: "300",
+    imageURL: "/default-image.jpg"
+}
+
+export const defaultButton = {
+    height: "40",
+    width: "100",
+}
