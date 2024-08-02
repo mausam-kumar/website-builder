@@ -6,6 +6,7 @@ import { SelectedElementStateProvider } from '@/context/SelectedElementStateProv
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Link from 'next/link';
+import { Suspense } from 'react'
 
 export default function Home() {
 
@@ -18,7 +19,9 @@ export default function Home() {
               <Link href="/template" className='rounded w-fit bg-indigo-600 px-2 py-1 text-md font-md text-white shadow-sm'>View Saved Template</Link>
             </div>
             <div className='flex space-x-10 mt-10'>
-              <Editor />
+              <Suspense>
+                <Editor />
+              </Suspense>
               <PropertiesPanel />
             </div>
           </SelectedElementStateProvider>
