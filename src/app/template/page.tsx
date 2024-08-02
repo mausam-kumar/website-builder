@@ -27,8 +27,8 @@ const Templates = () => {
                     return <div key={id} className="w-fit border rounded-sm p-4">
                         <p>{id}</p>
                         <div className="flex gap-x-4 mt-4">
-                            <Button text="Edit" />
-                            <Button text="View" />
+                            <Link href={`/?templateId=${id}`} className='rounded w-full text-center bg-slate-700 p-2 text-md font-md text-white shadow-sm'>Edit</Link>
+                            <Link href={`/template/${id}`} className='rounded w-full text-center bg-slate-700 p-2 text-md font-md text-white shadow-sm'>View</Link>
                         </div>
                     </div>
                 })

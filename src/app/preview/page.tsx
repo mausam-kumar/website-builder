@@ -8,7 +8,7 @@ const PreviewTemplate = () => {
     return <EditorStateProvider>
         <SelectedElementStateProvider>
             <PreviewDataProvider>
-                <Preview />
+                <Preview templateId=""/>
             </PreviewDataProvider>
         </SelectedElementStateProvider>
     </EditorStateProvider>

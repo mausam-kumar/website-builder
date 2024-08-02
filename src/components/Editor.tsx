@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useDrop, DropTargetMonitor } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
 import Sidebar from "./Sidebar";
@@ -56,7 +56,7 @@ const Editor = () => {
         const savedTemplates = JSON.parse(res)
         const idInURL = searchParams.get("templateId")
         const maxAge = 7 * 24 * 60 * 60 * 1000;
-        console.log(savedTemplates, idInURL)
+
         if (idInURL) {
             const updatedTemplateList = savedTemplates.map((_: { id: string, editorState: Element[]}) => {
                 if (_.id === idInURL) {
@@ -72,6 +72,23 @@ const Editor = () => {
             setCookie("templates", [...savedTemplates, { id, editorState }], { maxAge })
         }
     }
+
+    const renderSavedTemplate = useCallback(() => {
+        const res = getCookie("templates") || "[]"
+        const savedTemplates = JSON.parse(res)
+        const idInURL = searchParams.get("templateId")
+
+        const template = savedTemplates.find((_: { id: string, editorState: Element[]}) => _.id === idInURL)
+        console.log(template)
+        if (!!template?.editorState?.length) {
+            setEditorState(template.editorState)
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        renderSavedTemplate()
+    }, [renderSavedTemplate])
 
     return (
         <>
