@@ -43,10 +43,14 @@ const Preview = ({ templateId }: { templateId: string }) => {
     return <div className="flex-1 relative bg-gray-100 h-[80vh] min-w-screen justify-center flex">
         {!previewState?.length && <div className="pt-20"><EmptyState /></div>}
         <div className="max-w-6xl">
-            <div className='flex justify-center gap-x-6'>
-                <Link href="/" className='rounded w-fit bg-indigo-600 px-2 py-1 text-md font-md text-white shadow-sm'>Add New Template</Link>
-                <Link href="/template" className='rounded w-fit bg-indigo-600 px-2 py-1 text-md font-md text-white shadow-sm'>View Saved template</Link>
-            </div>
+            {!!previewState?.length && <div className='flex justify-center gap-x-6'>
+                <Link href="/" className="text-sm font-md rounded-sm py-2 px-4 border-2 uppercase leading-6 text-gray-900">
+                    Add New Template
+                </Link>
+                <Link href="/template" className="text-sm font-md rounded-sm py-2 px-4 border-2 uppercase leading-6 text-gray-900">
+                    View Saved template
+                </Link>
+            </div>}
             {
                 previewState?.map((_) => {
                     const { left, top } = _ || {}

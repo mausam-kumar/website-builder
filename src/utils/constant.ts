@@ -13,5 +13,7 @@ export const defaultImage = {
 
 export const defaultButton = {
     height: "40",
-    width: "100",
+    width: "160",
+    textColor: "#ffffff",
+    backgroundColor: "#334155"
 }

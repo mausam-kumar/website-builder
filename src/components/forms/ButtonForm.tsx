@@ -9,27 +9,31 @@ type ButtonFormProps = {
     text: string
     height: string
     width: string
+    textColor: string
+    backgroundColor: string
 }
 
-const ButtonForm: FC<ButtonFormProps> = ({ text = "", height, width }) => {
-    console.log({text, height, width}, "ButtonForm")
+const ButtonForm: FC<ButtonFormProps> = ({ text, height, width, textColor, backgroundColor }) => {
+    console.log({ text, height, width }, "ButtonForm")
     const { editorState, setEditorState } = useEditorStateContext()
     const { selectedElement } = useSelectedElementStateContext()
     const methods = useForm({
         defaultValues: {
             text,
             height,
-            width
+            width,
+            textColor,
+            backgroundColor
         },
         mode: "onSubmit",
     });
     const { handleSubmit } = methods;
     const handleFormSubmit = (formData: ButtonFormProps) => {
-        const { height, width, text } = formData || {}
+        const { height, width, text, backgroundColor, textColor } = formData || {}
         const updatedState = editorState.map((_) => {
             if (_.id === selectedElement?.id) {
-                return { ..._, content: {..._.content, height, width, text } }
-            }else{
+                return { ..._, content: { ..._.content, height, width, text, backgroundColor, textColor } }
+            } else {
                 return _
             }
         })
@@ -41,6 +45,8 @@ const ButtonForm: FC<ButtonFormProps> = ({ text = "", height, width }) => {
             <FormInput name="text" placeholder="Text" />
             <FormInput name="height" placeholder="Height" />
             <FormInput name="width" placeholder="Width" />
+            <FormInput name="textColor" placeholder="Text color" />
+            <FormInput name="backgroundColor" placeholder="Background color" />
             <Button type="submit" text="Apply" />
         </form>
     </FormProvider>

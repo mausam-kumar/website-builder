@@ -11,11 +11,10 @@ const PropertiesPanel = () => {
 
     const renderAction = () => {
         const element = editorState.find((_) => _.id === selectedElement?.id)
-        const { height, width, text, imageURL, alt } = element?.content || {}
-
+        const { height, width, text, imageURL, alt, backgroundColor, textColor } = element?.content || {}
         switch (type) {
             case "button":
-                return <ButtonForm height={height || defaultButton.height} width={width || defaultButton.width} text={text || "Default Text"} />
+                return <ButtonForm height={height || defaultButton.height} width={width || defaultButton.width} text={text || "Default Text"} backgroundColor={backgroundColor || defaultButton.backgroundColor} textColor={textColor || defaultButton.textColor} />
             case "image":
                 return <ImageForm imageURL={imageURL || defaultImageURL} alt={alt || "This is default Alt"} height={height || defaultImage.height} width={width || defaultImage.width} />
             default:

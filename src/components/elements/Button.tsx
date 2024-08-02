@@ -13,13 +13,13 @@ type ButtonProps = {
     backgroundColor?: string
 }
 
-const Button: FC<ButtonProps> = ({ onClick, handleRemove, backgroundColor = "#334155", showCloseBtn = false, text = "Button Text", textColor = "white", type = "button", height = defaultButton.height, width = defaultButton.width }) => {
+const Button: FC<ButtonProps> = ({ onClick, handleRemove, backgroundColor = defaultButton.backgroundColor, showCloseBtn = false, text = "Button Text", textColor = defaultButton.textColor, type = "button", height = defaultButton.height, width = defaultButton.width }) => {
     return <div className="relative w-fit border">
         <button
             type={type}
             onClick={onClick}
             style={{ height, width, color: textColor, backgroundColor }}
-            className="rounded w-fit bg-slate-700 px-2 py-1 text-md font-semibold shadow-sm"
+            className="rounded w-fit bg-slate-700 px-2 py-1 text-md font-semibold shadow-sm transform transition-all duration-300"
         >
             {text}
         </button>

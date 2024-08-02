@@ -49,8 +49,8 @@ const DraggableElement: React.FC<DraggableElementProps> = ({ element, onSelect }
       onClick={() => onSelect(element.id)}
     >
       {element.type === ElementType.TEXT && <div>{element.content.text}</div>}
-      {element.type === ElementType.IMAGE && <DynamicImage imageURL={element.content.imageURL} height={Number(element.content.height || defaultImage.height)} width={Number(element.content.width || defaultImage.width)} handleRemove={() => removeElementFromEditor(element.id)} />}
-      {element.type === ElementType.BUTTON && <Button type="button" text={element.content.text || "Default Text"} height={Number(element.content.height || defaultButton.height)} width={Number(element.content.width || defaultButton.width)} showCloseBtn handleRemove={() => removeElementFromEditor(element.id)} />}
+      {element.type === ElementType.IMAGE && <DynamicImage imageURL={element.content.imageURL} height={Number(element.content.height || defaultImage.height)} width={Number(element.content.width || defaultImage.width)} showRemoveBtn handleRemove={() => removeElementFromEditor(element.id)} />}
+      {element.type === ElementType.BUTTON && <Button type="button" text={element.content.text || "Default Text"} height={Number(element.content.height || defaultButton.height)} width={Number(element.content.width || defaultButton.width)} showCloseBtn handleRemove={() => removeElementFromEditor(element.id)} backgroundColor={element.content?.backgroundColor || defaultButton.backgroundColor} textColor={element.content?.textColor || defaultButton.textColor} />}
     </div>
   );
 };

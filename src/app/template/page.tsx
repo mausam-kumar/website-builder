@@ -19,12 +19,14 @@ const Templates = () => {
 
     return <div>
         <div className='flex justify-center'>
-            <Link href="/" className='rounded w-fit bg-indigo-600 px-2 py-1 text-md font-md text-white shadow-sm'>Add New Template</Link>
+            <Link href="/" className="text-sm font-md rounded-sm py-2 px-4 border-2 uppercase leading-6 text-gray-900">
+                Add New Template
+            </Link>
         </div>
-        <div className="grid grid-cols-2 place-content-center mt-10">
+        <div className="grid grid-cols-3 gap-6 place-content-center mt-10">
             {
                 savedTemplates.map(({ id }: { id: string, editorState: Element[] }) => {
-                    return <div key={id} className="w-fit border rounded-sm p-4">
+                    return <div key={id} className="w-fit border-2 rounded-sm p-4 flex-1">
                         <p>{id}</p>
                         <div className="flex gap-x-4 mt-4">
                             <Link href={`/?templateId=${id}`} className='rounded w-full text-center bg-slate-700 p-2 text-md font-md text-white shadow-sm'>Edit</Link>
