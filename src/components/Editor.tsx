@@ -17,6 +17,7 @@ const Editor = () => {
     const { setSelectedElement } = useSelectedElementStateContext()
     const editorRef = useRef<HTMLDivElement>(null);
     const [, drop] = useDrop({
+        
         accept: [ElementType.TEXT, ElementType.IMAGE, ElementType.BUTTON],
         drop: (item: { type: ElementType, id: string }, monitor: DropTargetMonitor) => {
             const offset = monitor.getClientOffset();

@@ -6,7 +6,8 @@ import EmptyState from "./EmptyState"
 import { useCallback, useEffect, useState } from "react"
 import { getCookie } from "cookies-next"
 import Link from "next/link"
-import { defaultImage } from "@/utils/constant"
+import { defaultButton, defaultImage, defaultTextArea } from "@/utils/constant"
+import TextArea from "./elements/TextArea"
 
 const Preview = ({ templateId }: { templateId: string }) => {
     const [previewState, setPreviewState] = useState<Element[]>(null!)
@@ -16,11 +17,11 @@ const Preview = ({ templateId }: { templateId: string }) => {
             case "image":
                 return <DynamicImage imageURL={content.imageURL} height={Number(content.height || defaultImage.height)} width={Number(content.width || defaultImage.width)} />
             case "button":
-                return <Button type="button" text={content.text || "Default Text"} height={Number(content.height || 40)} width={Number(content.width || 200)} />
+                return <Button type="button" text={content.text || "Default Text"} height={Number(content.height || defaultButton.height)} width={Number(content.width || defaultButton.width)} />
             case "text":
-                <div>{content.text}</div>
+                <TextArea text={content.text || defaultTextArea.text} height={Number(content.height || defaultButton.height)} width={Number(content.width || defaultButton.width)} backgroundColor={content.backgroundColor || defaultButton.backgroundColor} textColor={content.textColor || defaultButton.textColor} />;
             default:
-                break;
+                return null;
         }
     };
 
